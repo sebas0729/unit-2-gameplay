@@ -12,8 +12,9 @@ public class playercontroller : MonoBehaviour
     }
 
     // Update is called once per frame
-
+    public float horizontalInput;
     public float xRange = 10;
+    public float speed = 10.0f;
     void Update()
     {
         if (transform.position.x < -xRange)
@@ -23,6 +24,8 @@ public class playercontroller : MonoBehaviour
         if (transform.position.x > xRange)
         {
             transform.position = new Vector3(xRange, transform.position.y, transform.position.z);
+            horizontalInput = Input.GetAxis("Horizontal");
+            transform.Translate(Vector3.right * horizontalInput * Time.deltaTime * speed);
         }
     }
 }
